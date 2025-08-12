@@ -31,8 +31,8 @@
         </div>
 
         <div>
-            <label for="match_date">Date du match :</label>
-            <input type="date" name="match_date" id="match_date" value="{{ $game->match_date->format('Y-m-d') }}" required>
+            <label for="match_time">Heure du match :</label>
+            <input type="time" name="match_time" id="match_time" value ="{{ $game->match_time->format('H:i') }}" required>
         </div>
 
         <button type="submit">Mettre à jour</button>

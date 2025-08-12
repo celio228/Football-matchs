@@ -29,15 +29,19 @@
 
             <div class="d-flex justify-content-between align-items-center">
                 <div>
-                    <a href="{{ route('players.edit', $player) }}" class="btn btn-primary">Modifier le joueur</a>
-                    <a href="{{ route('players.index') }}" class="btn btn-secondary ms-2">Retour à la liste</a>
+                    @auth
+                        <a href="{{ route('players.edit', $player) }}" class="btn btn-primary">Modifier le joueur</a>
+                    @endauth
+                    <a href="{{ route('teams.show', $player->team) }}" class="btn-primary">Retour à la liste</a>
                 </div>
 
-                <form action="{{ route('players.destroy', $player) }}" method="POST" style="display: inline;">
+                @auth
+                    <form action="{{ route('players.destroy', $player) }}" method="POST" style="display: inline;">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce joueur ?')">Supprimer</button>
+                    <button type="submit" class="btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce joueur ?')">Supprimer</button>
                 </form>
+                @endauth
             </div>
         </div>
     </div>

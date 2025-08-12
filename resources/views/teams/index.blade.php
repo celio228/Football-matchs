@@ -2,6 +2,7 @@
 
 @section('title', 'Liste des équipes')
 
+
 @section('content')
 <div class="header">
     <h1>Parcourir toutes les équipes</h1>
@@ -23,6 +24,8 @@
 </div>
 
 
-<a href="{{ route('teams.create') }}" class="btn btn-primary">Créer une équipe</a>
+@if (Auth::check())
+    <a href="{{ route('teams.create') }}" class="btn btn-primary">Créer une équipe</a>
+@endif
 
 @endsection

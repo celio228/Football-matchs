@@ -148,14 +148,22 @@
 </div>
 
 <div class="mt-4">
-    <a href="{{ route('teams.edit', $team->id) }}" class="btn-primary">Modifier l'équipe</a>
-    <form action="{{ route('teams.destroy', $team->id) }}" method="POST" style="display: inline;">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="btn-danger">Supprimer l'équipe</button>
-    </form>
+    @if (Auth::check())
+        <a href="{{ route('teams.edit', $team->id) }}" class="btn-primary">Modifier l'équipe</a>
+    @endif
+    @if (Auth::check())
+        <form action="{{ route('teams.destroy', $team->id) }}" method="POST" style="display: inline;">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn-danger">Supprimer l'équipe</button>
+        </form>
+    @endif
     <a href="{{ route('teams.index') }}" class="btn-primary">Retour à la liste des équipes</a>
-    <a href="{{ route('players.create') }}" class="btn-primary">Créer un joueur</a>
+    @if (Auth::check())
+        <a href="{{ route('players.create') }}" class="btn-primary">Créer un joueur</a>
+    @endif
 </div>
 
 @endsection
+
+

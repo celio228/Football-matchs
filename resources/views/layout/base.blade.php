@@ -50,6 +50,7 @@
             list-style: none;
             margin: 0;
             padding: 0;
+            gap: 20px;
         }
 
         .navbar .nav-right li {
@@ -208,6 +209,20 @@
         .btn-primary:hover {
             background-color: #218838;
         }
+        .gin-button {
+            background-color: red;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .gin-button:hover {
+            background-color: #c0392b;
+        }
     </style>
 </head>
 <body>
@@ -222,7 +237,14 @@
                 <ul>
                     <li><a href="{{ route('games.index') }}" class="nav-link">Liste des matchs</a></li>
                     <li><a href="{{ route('teams.index') }}" class="nav-link">Liste des équipes</a></li>
-                    <li><a href="{{ route('login') }}" class="login-button">Se connecter</a></li>
+                    @if (Auth::check())
+                        <form method="POST" action="{{ route('logout') }}">
+    @csrf
+    <button type="submit" class="gin-button">Se déconnecter</button>
+</form>
+                    @else
+                        <li><a href="{{ route('login') }}" class="login-button">Se connecter</a></li>
+                    @endif
                 </ul>
             </div>
         </nav>

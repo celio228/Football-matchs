@@ -99,7 +99,16 @@
     <div class="login-box">
         <h1>Se connecter</h1>
         <p>Remplir vos paramètres de connexion pour vous connecter à votre compte administrateur.</p>
-        <form action="{{ route('login') }}" method="post">
+         @if($errors->any())
+    <div style="color: red;">
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+        <form action="{{ route('login.submit') }}" method="post">
             @csrf
             <div class="form-group">
                 <label for="email">E-mail</label>

@@ -159,7 +159,8 @@
                         <!-- Logo de l'équipe à domicile -->
                         <img src="{{ asset('storage/' . $game->homeTeam->logo) }}" alt="Logo de l'équipe à domicile" class="team-logo">
                         <span class="team-name">{{ $game->homeTeam->name }}</span>
-                        
+
+
                         <span class="score">0-0</span>
 
                         <!-- Logo de l'équipe à l'extérieur -->
@@ -185,7 +186,12 @@
         </div>
     @endif
 </div>
-<a href="{{ route('games.create') }}" class="btn btn-primary">Créer un match</a>
+
+@if (Auth::check())
+    <div class="container mt-4">
+        <a href="{{ route('games.create') }}" class="btn btn-primary">Créer un match</a>
+    </div>
+@endif
 
 
 <script>

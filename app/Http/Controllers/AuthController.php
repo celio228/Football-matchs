@@ -22,7 +22,7 @@ class AuthController extends Controller
         $request->session()->regenerate();
 
         // ✅ Redirection après connexion réussie
-        return redirect()->intended(url()->previous());
+        return redirect()->route('home');
     }
 
     // Échec de l'authentification
